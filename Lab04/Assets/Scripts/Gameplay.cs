@@ -26,7 +26,19 @@ public class Gameplay : MonoBehaviour
         }
         if (allTrue)
         {
-            Debug.Log("You Win!");
+            var things = GameObject.FindGameObjectsWithTag("Dynamic_Body");
+            foreach(var t in things)
+            {
+                var buo = t.GetComponent<BuoyancyComponent>();
+                if(buo != null)
+                {
+                    buo.waterHeight = 10;
+                }
+            }
+            foreach(var g in groups)
+            {
+                g.minObj = 15;
+            }
         }
     }
 }
