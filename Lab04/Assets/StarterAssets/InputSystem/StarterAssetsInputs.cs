@@ -18,6 +18,7 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool menu;
+		public bool interact;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -27,6 +28,10 @@ namespace StarterAssets
 		public bool cursorInputForLook = true;
 
 #if ENABLE_INPUT_SYSTEM
+		public void OnInteract(InputValue value)
+		{
+			InteractInput(value.isPressed);
+		}
 		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
@@ -74,6 +79,10 @@ namespace StarterAssets
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
+		}
+		public void InteractInput(bool interacting)
+		{
+			interact = interacting;
 		}
         public void MenuInput(bool newMenuState)
         {
